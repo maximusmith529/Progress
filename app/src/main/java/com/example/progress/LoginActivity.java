@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 //        if(ParseUser.getCurrentUser() != null)  {
 //            goMainActivity();
 //        }
-        etUsername = findViewById(R.id.etUsername);
+        etUsername = findViewById(R.id.etUsername );
         etPassword = findViewById(R.id.etPassword);
         ibConfirm = findViewById(R.id.btnConfirm);
         tvSignup = findViewById(R.id.tvSignup);
