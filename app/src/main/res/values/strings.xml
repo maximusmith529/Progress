@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Progress</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id">q0Ri0Hz07JPSEUMz7D8jZUonGknWhBXI4eC4fAz3</string>
+    <string name="back4app_client_key">YnGjWpo9EkiDW1hsp1G61sVkuRUpBSv6h5KHSqLy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

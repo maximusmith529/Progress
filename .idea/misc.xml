@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/activity_login.xml" value="0.27309782608695654" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/activity_main.xml" value="0.2817028985507246" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/activity_signup.xml" value="0.10740740740740741" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/fragment_checklist.xml" value="0.2817028985507246" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/item_checklist.xml" value="0.2817028985507246" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/item_task.xml" value="0.2817028985507246" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.4265625" />
       </map>
     </option>
   </component>

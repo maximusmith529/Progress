@@ -27,9 +27,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//        if(ParseUser.getCurrentUser() != null)  {
-//            goMainActivity();
-//        }
+        if(ParseUser.getCurrentUser() != null)  {
+            goMainActivity();
+        }
         etUsername = findViewById(R.id.etUsername );
         etPassword = findViewById(R.id.etPassword);
         ibConfirm = findViewById(R.id.btnConfirm);
@@ -59,17 +59,17 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser(String user, String pass) {
 
         Log.i(TAG, "Attempting to LoginActivity: " +user + " " + pass);
-        ParseUser.logInInBackground(user, pass, new LogInCallback() {
+        ParseUser.logInInBackground(user, pass, new LogInCallback(){
             @Override
             public void done(ParseUser user, ParseException e) {
-                if(e != null){
-                    Log.e(TAG, "Issue with logic: ",e);
-                    return;
-                }
-                goMainActivity();
-                Toast.makeText(LoginActivity.this, "Success!!", Toast.LENGTH_LONG);
-
+            if(e != null){
+                Log.e(TAG, "Issue with logic: ",e);
+                return;
             }
+            goMainActivity();
+            Toast.makeText(LoginActivity.this, "Success!!", Toast.LENGTH_LONG).show();
+
+        }
         });
     }
 

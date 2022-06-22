@@ -23,9 +23,9 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        btnConfirm = findViewById(R.id.btnConfirm);
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
+        btnConfirm = (Button) findViewById(R.id.btnConfirm);
+        etUsername = (EditText) findViewById(R.id.etUsername);
+        etPassword = (EditText) findViewById(R.id.etPassword);
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 signUp(etUsername.getText().toString(), etPassword.getText().toString());
