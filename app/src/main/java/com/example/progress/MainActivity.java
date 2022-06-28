@@ -7,13 +7,16 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.progress.Fragments.ChecklistFragment;
+import com.example.progress.Fragments.CheckListsFragment;
+import com.example.progress.Fragments.ReflectionFragment;
+import com.example.progress.Fragments.TaskListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
@@ -22,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
-    private ImageView ivLogout;
+    private ImageView btnToProfile;
 
 
     @Override
@@ -31,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ivLogout = (ImageView)findViewById(R.id.Logout);
+        btnToProfile = (ImageView)findViewById(R.id.btnToProfile);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
 
-        ivLogout.setOnClickListener(new View.OnClickListener() {
+        btnToProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logout(v);
+                goToProfile(v);
             }
         });
 
@@ -49,35 +52,31 @@ public class MainActivity extends AppCompatActivity {
 
                 Fragment fragment = null;
                 switch (item.getItemId()) {
-                    case R.id.home:
-                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                        fragment = new ChecklistFragment();
+                    case R.id.btnCheckListsView:
+                        Toast.makeText(MainActivity.this, "Check Lists", Toast.LENGTH_SHORT).show();
+                        fragment = new CheckListsFragment();
                         break;
-                    case R.id.compose:
-                        Toast.makeText(MainActivity.this, "Compose", Toast.LENGTH_SHORT).show();
-                        //fragment = new ComposeFragment();
+                    case R.id.btnTaskListView:
+                        Toast.makeText(MainActivity.this, "Task List", Toast.LENGTH_SHORT).show();
+                        fragment = new TaskListFragment();
                         break;
-                    case R.id.profile:
+                    case R.id.btnReflectionView:
                     default:
-                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Reflection", Toast.LENGTH_SHORT).show();
+                        fragment = new ReflectionFragment();
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.btnTaskListView);
     }
 
 
-    public void logout(View view) {
 
-        ParseUser.logOut();
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        Log.i("User", "User: "+ParseUser.getCurrentUser());
-        Intent i = new Intent(this, LoginActivity.class);
+    public void goToProfile(View view){
+        Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
-        finish();
     }
-
 }

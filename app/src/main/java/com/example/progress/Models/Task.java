@@ -2,13 +2,15 @@ package com.example.progress.Models;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 @ParseClassName("Task")
 public class Task extends ParseObject {
     public static final String TAG = "Task";
     public static final String KEY_NAME = "name";
     public static final String KEY_DESCRIPTION = "description";
-    public static final String KEY_CHECKLIST = "parentChecklist";
+    public static final String KEY_USER = "user";
+    public static final String KEY_CHECKLIST = "parentList";
     public static final String KEY_FINISHED = "finished";
     public static final String DATE = "createdAt";
 
@@ -26,6 +28,15 @@ public class Task extends ParseObject {
     public String getDescription() {
         return getString(KEY_DESCRIPTION);
     }
+
+    public String getUser() {
+        return getString(KEY_USER);
+    }
+
+    public void setUser(ParseUser user) {
+        put(KEY_USER, user);
+    }
+
 
     public void setDescription(String description) {
         put(KEY_DESCRIPTION,description);

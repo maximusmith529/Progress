@@ -3,19 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
-        android:icon="@android:drawable/ic_menu_compass"
-        android:title="Home"
+        android:id="@+id/btnCheckListsView"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="Check Lists"
         app:showAsAction="always" />
     <item
-        android:id="@+id/compose"
+        android:id="@+id/btnTaskListView"
         android:icon="@android:drawable/ic_menu_edit"
-        android:title="Compose"
+        android:title="Tasks"
         app:showAsAction="always" />
     <item
-        android:id="@+id/profile"
-        android:icon="@mipmap/ic_launcher"
-        android:title="Profile"
+        android:id="@+id/btnReflectionView"
+        android:icon="@android:drawable/ic_menu_compass"
+        android:title="Reflect"
         app:showAsAction="always" />
 
 </menu>

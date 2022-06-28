@@ -17,15 +17,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/Logout"
+            android:id="@+id/btnToProfile"
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_gravity="right"
             android:textColor="#000000"
             android:textSize="24sp"
-            android:title="Logout"
             android:visible="true"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:srcCompat="@android:drawable/ic_menu_view"
             tools:layout_editor_absoluteX="318dp"
             tools:layout_editor_absoluteY="8dp" />
 

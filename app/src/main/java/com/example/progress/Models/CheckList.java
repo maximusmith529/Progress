@@ -15,6 +15,7 @@ public class CheckList extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_USER = "userID";
     public static final String DATE = "createdAt";
+    public static final String isActive = "isActive";
 
     private Date resetTime; //temporary, need to look into resets
 
