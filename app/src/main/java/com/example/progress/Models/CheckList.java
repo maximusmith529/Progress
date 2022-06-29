@@ -31,10 +31,10 @@ public class CheckList extends ParseObject {
         return getString(KEY_DESCRIPTION);
     }
 
-    public ParseObject getUserID(){
+    public ParseObject getUser(){
         return getParseObject(KEY_USER);
     }
-    public void putChecklist(ParseObject user){
+    public void setUser(ParseObject user){
         put(KEY_USER,user);
     }
 
