@@ -30,6 +30,9 @@ public class CheckList extends ParseObject {
     public String getDescription() {
         return getString(KEY_DESCRIPTION);
     }
+    public void setDescription(String description) {
+        put(KEY_DESCRIPTION,description);
+    }
 
     public ParseObject getUser(){
         return getParseObject(KEY_USER);
@@ -38,7 +41,9 @@ public class CheckList extends ParseObject {
         put(KEY_USER,user);
     }
 
-    public void setDescription(String description) {
-        put(KEY_DESCRIPTION,description);
+    public Boolean getIsActive() {
+        return getBoolean(isActive);
     }
+    //TODO: Implement setting active lists
+    public void setIsActive(){}
 }

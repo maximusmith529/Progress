@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.Switch;
 import android.widget.TextView;
 
 
@@ -24,7 +25,7 @@ public class ChecklistAdapter extends RecyclerView.Adapter<ChecklistAdapter.View
 
     private final Context context;
     private final List<CheckList> checkLists;
-    public static final String TAG = "Task Adapter";
+    public static final String TAG = "Checklist Adapter";
 
     public ChecklistAdapter(Context context, List<CheckList> checkLists) {
         this.context = context;
@@ -52,16 +53,23 @@ public class ChecklistAdapter extends RecyclerView.Adapter<ChecklistAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView tvChecklistName;
+        private Switch swtIsActive;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             tvChecklistName = itemView.findViewById(R.id.tvChecklistName);
+            swtIsActive = itemView.findViewById(R.id.swtIsActive);
 
         }
 
         public void bind(CheckList checkList){
             tvChecklistName.setText(checkList.getName());
             Log.d(TAG, "Bind Ran \nListName:" + checkList.getName() + "\nDescription: "+checkList.getDescription());
+            if(checkList.getIsActive()){
+                swtIsActive.setChecked(true);
+                return;
+            }
+            swtIsActive.setText("Inactive");
         }
 
     }
