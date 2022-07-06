@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Progress"
         tools:targetApi="31">
         <activity
+            android:name=".AlbumActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateChecklistActivity"
             android:exported="false" />
         <activity

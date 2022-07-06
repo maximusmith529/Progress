@@ -87,6 +87,8 @@ public class CheckListsFragment extends Fragment {
                 return;
             }
         });
+
+
         queryListsForCurrentUser();
     }
 
