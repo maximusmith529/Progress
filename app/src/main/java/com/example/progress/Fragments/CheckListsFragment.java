@@ -1,5 +1,6 @@
 package com.example.progress.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.progress.Adapters.ChecklistAdapter;
+import com.example.progress.CreateChecklistActivity;
+import com.example.progress.MainActivity;
 import com.example.progress.Models.CheckList;
 import com.example.progress.R;
 import com.parse.FindCallback;
@@ -33,6 +37,7 @@ public class CheckListsFragment extends Fragment {
     protected ChecklistAdapter adapter;
     protected List<CheckList> checklists;
     private RecyclerView rvChecklists;
+    private ImageButton btnToCreateChecklist;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -66,13 +71,22 @@ public class CheckListsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvChecklists = view.findViewById(R.id.rvChecklists);
+        btnToCreateChecklist = view.findViewById(R.id.btnToCreateChecklist);
         checklists = new ArrayList<>();
         adapter = new ChecklistAdapter(getContext(), checklists);
+
 
         //setAdapter into recycler view
         rvChecklists.setAdapter(adapter);
         rvChecklists.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        btnToCreateChecklist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CreateChecklistActivity.class);
+                startActivity(i);
+                return;
+            }
+        });
         queryListsForCurrentUser();
     }
 

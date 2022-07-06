@@ -5,39 +5,38 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
-
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.progress.Models.CheckList;
-import com.example.progress.Models.Task;
 import com.example.progress.R;
-
-import org.w3c.dom.Text;
+import com.parse.ParseFile;
 
 import java.util.List;
 
-public class ChecklistAdapter extends RecyclerView.Adapter<ChecklistAdapter.ViewHolder> {
+public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder>  {
 
     private final Context context;
     private final List<CheckList> checkLists;
-    public static final String TAG = "Checklist Adapter";
+    public static final String TAG = "Album Adapter";
 
-    public ChecklistAdapter(Context context, List<CheckList> checkLists) {
+    public AlbumAdapter(Context context, List<CheckList> checkLists) {
         this.context = context;
         this.checkLists = checkLists;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_checklist, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_album, parent, false);
         Log.d(TAG, "created viewholder");
 
-        return new ViewHolder(view);
+        return new AlbumAdapter.ViewHolder(view);
     }
 
     @Override
@@ -52,24 +51,24 @@ public class ChecklistAdapter extends RecyclerView.Adapter<ChecklistAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView tvChecklistName;
-        private Switch swtIsActive;
+        private TextView tvAlbumName;
+        private ImageView ivThumbnail;
+
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
-            tvChecklistName = itemView.findViewById(R.id.tvChecklistName);
-            swtIsActive = itemView.findViewById(R.id.swtIsActive);
+            tvAlbumName = itemView.findViewById(R.id.tvAlbumName);
+            ivThumbnail = itemView.findViewById(R.id.ivAlbumThumbnail);
 
         }
 
         public void bind(CheckList checkList){
-            tvChecklistName.setText(checkList.getName());
+            tvAlbumName.setText(checkList.getName());
             Log.d(TAG, "Bind Ran \nListName:" + checkList.getName() + "\nDescription: "+checkList.getDescription());
-            if(checkList.getIsActive()){
-                swtIsActive.setChecked(true);
-                return;
+            ParseFile image = checkList.getKeyThumbnail();
+            if (image != null) {
+                Glide.with(context).load(image.getUrl()).into(ivThumbnail);
             }
-            swtIsActive.setText("Inactive");
         }
 
     }

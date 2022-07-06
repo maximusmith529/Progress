@@ -2,6 +2,7 @@ package com.example.progress.Models;
 
 
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class CheckList extends ParseObject {
     public static final String KEY_USER = "userID";
     public static final String DATE = "createdAt";
     public static final String isActive = "isActive";
+    public static final String KEY_THUMBNAIL = "thumbnail";
 
     private Date resetTime; //temporary, need to look into resets
 
@@ -30,6 +32,9 @@ public class CheckList extends ParseObject {
     public String getDescription() {
         return getString(KEY_DESCRIPTION);
     }
+    public void setDescription(String description) {
+        put(KEY_DESCRIPTION,description);
+    }
 
     public ParseObject getUser(){
         return getParseObject(KEY_USER);
@@ -38,7 +43,12 @@ public class CheckList extends ParseObject {
         put(KEY_USER,user);
     }
 
-    public void setDescription(String description) {
-        put(KEY_DESCRIPTION,description);
+    public Boolean getIsActive() {
+        return getBoolean(isActive);
     }
+    //TODO: Implement setting active lists
+    public void setIsActive(){}
+
+    public ParseFile getKeyThumbnail() {return getParseFile(KEY_THUMBNAIL);}
+    public void setKeyThumbnail(ParseFile thumbnail){put(KEY_THUMBNAIL, thumbnail);}
 }

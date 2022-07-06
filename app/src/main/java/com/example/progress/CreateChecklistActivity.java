@@ -3,6 +3,7 @@ package com.example.progress;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -61,9 +62,14 @@ public class CreateChecklistActivity extends AppCompatActivity {
                 Log.i(TAG, "Checklist was created successfully");
                 etCreateChecklistName.setText("");
                 etCreateChecklistDescription.setText("");
+                goToMain();
             }
+
         });
-
-
+    }
+    private void goToMain() {
+        Intent i = new Intent(CreateChecklistActivity.this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 }

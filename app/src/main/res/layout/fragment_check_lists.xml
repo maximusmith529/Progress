@@ -12,10 +12,11 @@
 
         <TextView
             android:id="@+id/tvCheckListsTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:text="Checklists"
             android:textSize="34sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnToCreateChecklist"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +27,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCheckListsTitle"
             tools:layout_editor_absoluteX="0dp" />
+
+        <ImageButton
+            android:id="@+id/btnToCreateChecklist"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:background="@android:drawable/ic_menu_add"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCheckListsTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvCheckListsTitle"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
