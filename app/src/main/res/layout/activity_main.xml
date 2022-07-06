@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/btnToProfile"
+            android:id="@+id/btnAddPhotoToAlbum"
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_gravity="right"

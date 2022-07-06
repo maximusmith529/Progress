@@ -114,9 +114,6 @@ public class ReflectionFragment extends Fragment {
                 }
                 for(CheckList t : objects) {
                     Log.i(TAG, "List Name = " + t.getName());
-
-
-
                 }
 //                // Remember to CLEAR OUT old items before appending in the new ones
 //                checklistAdapter.clear();
