@@ -41,8 +41,8 @@ public class ReflectionFragment extends Fragment {
     private String mParam2;
 
     public static final String TAG = "Reflection Fragment";
-    private RecyclerView rvAlbums;
-    protected AlbumAdapter adapter;
+    private RecyclerView rvAlbums, rvQuizzes;
+    protected AlbumAdapter albumAdapter, quizAdapter;
     protected List<CheckList> checklists;
 
 
@@ -88,22 +88,28 @@ public class ReflectionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvAlbums = view.findViewById(R.id.rvAlbums);
+        rvQuizzes = view.findViewById(R.id.rvQuizzes);
 
         checklists = new ArrayList<>();
-        adapter = new AlbumAdapter(getContext(), checklists);
+        albumAdapter = new AlbumAdapter(getContext(), checklists);
+        quizAdapter = new AlbumAdapter(getContext(), checklists);
 
-        rvAlbums.setAdapter(adapter);
+        rvAlbums.setAdapter(albumAdapter);
         rvAlbums.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        rvQuizzes.setAdapter(quizAdapter);
+        rvQuizzes.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
-        queryListsForCurrentUser();
+        queryListsForCurrentUserAlbum();
+        queryListsForCurrentUserQuiz();
     }
 
-    private void queryListsForCurrentUser() {
+    private void queryListsForCurrentUserQuiz() {
         // get only checklists
         ParseQuery<CheckList> query = ParseQuery.getQuery(CheckList.class);
         // only from user
         query.include(CheckList.KEY_USER);
         query.whereEqualTo(CheckList.KEY_USER, ParseUser.getCurrentUser());
+        query.whereEqualTo(CheckList.hasQuiz, true);
         query.orderByDescending("created_at");
         query.findInBackground(new FindCallback<CheckList>() {
             @Override
@@ -122,12 +128,47 @@ public class ReflectionFragment extends Fragment {
 
 
                 // Remember to CLEAR OUT old items before appending in the new ones
-                adapter.clear();
+                albumAdapter.clear();
                 // ...the data has come back, add new items to your adapter...
-                adapter.addAll(objects);
+                albumAdapter.addAll(objects);
 
                 Log.i(TAG, "Num of Lists: " + checklists.size()+"\n");
-                adapter.notifyDataSetChanged();
+                albumAdapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void queryListsForCurrentUserAlbum() {
+        // get only checklists
+        ParseQuery<CheckList> query = ParseQuery.getQuery(CheckList.class);
+        // only from user
+        query.include(CheckList.KEY_USER);
+        query.whereEqualTo(CheckList.KEY_USER, ParseUser.getCurrentUser());
+        query.whereEqualTo(CheckList.hasPhotos, true);
+        query.orderByDescending("created_at");
+        query.findInBackground(new FindCallback<CheckList>() {
+            @Override
+            public void done(List<CheckList> objects, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting lists", e);
+                    return;
+                }
+                for(CheckList t : objects) {
+                    Log.i(TAG, "List Name = " + t.getName());
+                }
+//                // Remember to CLEAR OUT old items before appending in the new ones
+//                checklistAdapter.clear();
+//                // ...the data has come back, add new items to your adapter...
+//                checklistAdapter.addAll(objects);
+
+
+                // Remember to CLEAR OUT old items before appending in the new ones
+                quizAdapter.clear();
+                // ...the data has come back, add new items to your adapter...
+                quizAdapter.addAll(objects);
+
+                Log.i(TAG, "Num of Lists: " + checklists.size()+"\n");
+                quizAdapter.notifyDataSetChanged();
             }
         });
     }

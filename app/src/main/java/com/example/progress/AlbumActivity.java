@@ -5,8 +5,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.progress.Adapters.PhotoAdapter;
 import com.example.progress.Models.CheckList;
@@ -25,6 +30,7 @@ public class AlbumActivity extends AppCompatActivity {
     private List<Photo> photos;
     private RecyclerView rvPhotos;
     private PhotoAdapter adapter;
+    private ImageView btnToCamera;
     public static final String TAG = "Album Activity";
 
 
@@ -36,6 +42,7 @@ public class AlbumActivity extends AppCompatActivity {
         rvPhotos = findViewById(R.id.rvPhotos);
         checklist = getIntent().getParcelableExtra("checklist");
         adapter = new PhotoAdapter(this, photos);
+        btnToCamera = findViewById(R.id.btnAddPhotoToAlbum);
         rvPhotos.setAdapter(adapter);
         rvPhotos.setLayoutManager(new LinearLayoutManager(this));
 
@@ -43,7 +50,20 @@ public class AlbumActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, numCols);
         rvPhotos.setLayoutManager(gridLayoutManager);
 
+        btnToCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToCamera(checklist);
+            }
+        });
+
         queryPhotos();
+    }
+
+    public void goToCamera(CheckList checklist){
+        Intent i = new Intent (AlbumActivity.this, CameraActivity.class);
+        i.putExtra("checklist", checklist);
+        startActivity(i);
     }
 
     private void queryPhotos() {

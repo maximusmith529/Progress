@@ -9,7 +9,6 @@ public class Task extends ParseObject {
     public static final String TAG = "Task";
     public static final String KEY_NAME = "name";
     public static final String KEY_DESCRIPTION = "description";
-    public static final String KEY_USER = "user";
     public static final String KEY_CHECKLIST = "parentList";
     public static final String KEY_FINISHED = "finished";
     public static final String DATE = "createdAt";
@@ -29,15 +28,6 @@ public class Task extends ParseObject {
         return getString(KEY_DESCRIPTION);
     }
 
-    public String getUser() {
-        return getString(KEY_USER);
-    }
-
-    public void setUser(ParseUser user) {
-        put(KEY_USER, user);
-    }
-
-
     public void setDescription(String description) {
         put(KEY_DESCRIPTION,description);
     }
@@ -45,7 +35,7 @@ public class Task extends ParseObject {
     public ParseObject getChecklist(){
         return getParseObject(KEY_CHECKLIST);
     }
-    public void putChecklist(ParseObject checklist){
+    public void setChecklist(ParseObject checklist){
         put(KEY_CHECKLIST,checklist);
     }
 

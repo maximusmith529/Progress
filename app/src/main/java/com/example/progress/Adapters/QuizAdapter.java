@@ -16,84 +16,81 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.progress.AlbumActivity;
 import com.example.progress.Models.CheckList;
-import com.example.progress.Models.Photo;
-import com.example.progress.PhotoDetailActivity;
 import com.example.progress.R;
 import com.parse.ParseFile;
 
 import java.util.List;
 
-public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder>  {
+public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder>  {
 
     private final Context context;
-    private final List<Photo> photos;
+    private final List<CheckList> checkLists;
     public static final String TAG = "Album Adapter";
 
-    public PhotoAdapter(Context context, List<Photo> photos) {
+    public QuizAdapter(Context context, List<CheckList> checkLists) {
         this.context = context;
-        this.photos = photos;
+        this.checkLists = checkLists;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_photo, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_album, parent, false);
         Log.d(TAG, "created viewholder");
 
-        return new PhotoAdapter.ViewHolder(view);
+        return new QuizAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Photo photo = photos.get(position);
-        holder.bind(photo);
+        CheckList checkList = checkLists.get(position);
+        holder.bind(checkList);
     }
 
     @Override
     public int getItemCount() {
-        return photos.size();
+        return checkLists.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private ImageView ivPhoto;
+        private TextView tvAlbumName;
+        private ImageView ivThumbnail;
 
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
-            ivPhoto = itemView.findViewById(R.id.ivPhoto);
+            tvAlbumName = itemView.findViewById(R.id.tvAlbumName);
+            ivThumbnail = itemView.findViewById(R.id.ivAlbumThumbnail);
 
         }
 
-        public void bind(Photo photo) {
-
-            ParseFile image = photo.getKeyImage();
+        public void bind(CheckList checkList){
+            tvAlbumName.setText(checkList.getName());
+            Log.d(TAG, "Bind Ran \nListName:" + checkList.getName() + "\nDescription: "+checkList.getDescription());
+            ParseFile image = checkList.getKeyThumbnail();
             if (image != null) {
-                Glide.with(context).load(image.getUrl()).into(ivPhoto);
-
+                Glide.with(context).load(image.getUrl()).into(ivThumbnail);
             }
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, PhotoDetailActivity.class);
-                    // serialize the movie using parceler, use its short name as a key
-                    intent.putExtra("photo", photo);
-                    // show the activity
-                    context.startActivity(intent);
+                    Intent i = new Intent(context, AlbumActivity.class);
+                    i.putExtra("checklist",checkList);
+                    context.startActivity(i);
                 }
             });
-
         }
 
     }
     // Clean all elements of the recycler
     public void clear() {
-        photos.clear();
+        checkLists.clear();
         notifyDataSetChanged();
     }
 
     // Add a list of items -- change to type used
-    public void addAll(List<Photo> list) {
-        photos.addAll(list);
+    public void addAll(List<CheckList> list) {
+        checkLists.addAll(list);
         notifyDataSetChanged();
     }
 }
