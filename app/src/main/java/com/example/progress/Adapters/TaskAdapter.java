@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progress.Models.Task;
@@ -52,20 +53,24 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
         private CheckBox cbTask;
         private TextView tvTaskDescription;
+        private ConstraintLayout itemLayout;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             cbTask = itemView.findViewById(R.id.cbTaskName);
             tvTaskDescription =  itemView.findViewById(R.id.tvTaskDesc);
-
+            itemLayout = itemView.findViewById(R.id.itemLayout);
 
         }
 
         public void bind(Task task){
             cbTask.setText(task.getName());
-//            if(!task.getDescription().isEmpty())
-//                tvTaskDescription.setText(task.getDescription());
+            if(task.getDescription() != null)
+                tvTaskDescription.setText(task.getDescription());
+            else {
+                tvTaskDescription.setVisibility(View.GONE);
 
+            }
 
             cbTask.setText(task.getName());
             cbTask.setChecked(task.isFinished());

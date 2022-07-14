@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskList.CreateTaskActivity">
+
+    <EditText
+        android:id="@+id/etCreateTaskName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="18dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreateTaskTitle" />
+
+    <EditText
+        android:id="@+id/etCreateTaskDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Description (Optional)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/etCreateTaskName"
+        app:layout_constraintStart_toStartOf="@+id/etCreateTaskName"
+        app:layout_constraintTop_toBottomOf="@+id/etCreateTaskName" />
+
+    <TextView
+        android:id="@+id/tvCreateTaskTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Create New Task"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintStart_toStartOf="@+id/etCreateTaskName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSubmitTask"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/etCreateTaskDescription"
+        app:layout_constraintStart_toStartOf="@+id/etCreateTaskName"
+        app:layout_constraintTop_toBottomOf="@+id/etCreateTaskDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>

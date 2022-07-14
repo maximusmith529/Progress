@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".PhotoDetailActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -17,14 +16,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/btnAddPhotoToAlbum"
+            android:id="@+id/btnPhotoSettings"
             android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_gravity="right"
             android:textColor="#000000"
             android:textSize="24sp"
             android:visible="true"
-            app:srcCompat="@android:drawable/ic_menu_view"
+            app:srcCompat="@android:drawable/ic_menu_add"
             tools:layout_editor_absoluteX="318dp"
             tools:layout_editor_absoluteY="8dp" />
 
@@ -39,20 +38,22 @@
             tools:layout_editor_absoluteY="28dp" />
     </androidx.appcompat.widget.Toolbar>
 
-    <FrameLayout
-        android:id="@+id/flContainer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+    <ImageView
+        android:id="@+id/ivDetailPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"></FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:srcCompat="@tools:sample/avatars"></ImageView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <TextView
+        android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom_navigation" />
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivDetailPhoto" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

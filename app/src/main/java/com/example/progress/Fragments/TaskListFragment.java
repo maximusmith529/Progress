@@ -1,6 +1,7 @@
 package com.example.progress.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,10 +14,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.progress.Adapters.ChecklistAdapter;
 import com.example.progress.Adapters.TaskAdapter;
+import com.example.progress.TaskList.CreateTaskActivity;
 import com.example.progress.Models.CheckList;
 import com.example.progress.Models.Task;
 import com.example.progress.R;
@@ -48,8 +51,10 @@ public class TaskListFragment extends Fragment {
     public static final String TAG = "TaskList Fragment";
     private RecyclerView rvTasks;
     private TextView tvChecklistTitle;
+    private ImageButton btnChecklistSettings, btnNewTask;
     protected TaskAdapter adapter;
     protected ChecklistAdapter checklistAdapter;
+    private CheckList checklist;
     protected List<Task> tasks;
     protected List<CheckList> checklists;
 
@@ -104,7 +109,26 @@ public class TaskListFragment extends Fragment {
         adapter = new TaskAdapter(getContext(), tasks);
         //not used, yet TODO: Replace textView with adapter
         checklistAdapter = new ChecklistAdapter(getContext(), checklists);
+        btnNewTask = view.findViewById(R.id.btnNewTask);
+        btnChecklistSettings = view.findViewById(R.id.btnChecklistSettings);
 
+        btnChecklistSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: setup checklist settings activity
+            }
+        });
+
+        btnNewTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: setup new tasklist
+                Intent i = new Intent(getActivity(), CreateTaskActivity.class);
+                i.putExtra("checklist", checklist);
+                startActivity(i);
+                return;
+            }
+        });
 
         // set the adapter on the recycler view
         rvTasks.setAdapter(adapter);
@@ -134,7 +158,7 @@ public class TaskListFragment extends Fragment {
                 for(CheckList t : objects) {
                     Log.i(TAG, "List Name = " + t.getName());
                     tvChecklistTitle.setText(t.getName());
-
+                    checklist = t;
                 }
 //                // Remember to CLEAR OUT old items before appending in the new ones
 //                checklistAdapter.clear();

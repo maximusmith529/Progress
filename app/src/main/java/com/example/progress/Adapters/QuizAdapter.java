@@ -21,13 +21,13 @@ import com.parse.ParseFile;
 
 import java.util.List;
 
-public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder>  {
+public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder>  {
 
     private final Context context;
     private final List<CheckList> checkLists;
     public static final String TAG = "Album Adapter";
 
-    public AlbumAdapter(Context context, List<CheckList> checkLists) {
+    public QuizAdapter(Context context, List<CheckList> checkLists) {
         this.context = context;
         this.checkLists = checkLists;
     }
@@ -38,7 +38,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
         View view = LayoutInflater.from(context).inflate(R.layout.item_album, parent, false);
         Log.d(TAG, "created viewholder");
 
-        return new AlbumAdapter.ViewHolder(view);
+        return new QuizAdapter.ViewHolder(view);
     }
 
     @Override
