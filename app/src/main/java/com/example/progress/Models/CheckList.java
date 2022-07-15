@@ -20,9 +20,10 @@ public class CheckList extends ParseObject {
     public static final String hasQuiz = "hasQuiz";
     public static final String hasPhotos = "hasPhotos";
     public static final String KEY_THUMBNAIL = "thumbnail";
-
+    public static final String hasNotifs = "hasNotifs";
 
     private Date resetTime; //temporary, need to look into resets
+
 
     public String getName() {
         return getString(KEY_NAME);
@@ -64,4 +65,11 @@ public class CheckList extends ParseObject {
 
     public ParseFile getKeyThumbnail() {return getParseFile(KEY_THUMBNAIL);}
     public void setKeyThumbnail(ParseFile thumbnail){put(KEY_THUMBNAIL, thumbnail);}
+
+    public boolean getHasNotifs() {
+        return getBoolean(hasNotifs);
+    }
+    public void setHasNotifs(boolean bool) {put(hasNotifs, bool);
+    }
+
 }

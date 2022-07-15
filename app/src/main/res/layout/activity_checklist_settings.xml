@@ -6,4 +6,135 @@
     android:layout_height="match_parent"
     tools:context=".TaskList.ChecklistSettingsActivity">
 
+    <EditText
+        android:id="@+id/etChecklistSettingsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="TestName Space" />
+
+    <EditText
+        android:id="@+id/etChecklistSettingsDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#5A5A5A"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/etChecklistSettingsTitle"
+        app:layout_constraintStart_toStartOf="@+id/etChecklistSettingsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/etChecklistSettingsTitle"
+        tools:text="TestDescription Space" />
+
+    <Switch
+        android:id="@+id/swHasNotifs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:checked="false"
+        android:scaleX="1.15"
+        android:scaleY="1.15"
+        android:showText="false"
+        android:textAlignment="textEnd"
+        app:layout_constraintStart_toStartOf="@+id/etChecklistSettingsDescription"
+        app:layout_constraintTop_toBottomOf="@+id/etChecklistSettingsDescription" />
+
+    <TextView
+        android:id="@+id/tvHasNotifs"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:text="Push Notifications"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/swHasNotifs"
+        app:layout_constraintStart_toEndOf="@+id/swHasNotifs"
+        app:layout_constraintTop_toTopOf="@+id/swHasNotifs" />
+
+    <Switch
+        android:id="@+id/swHasAlbum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:checked="false"
+        android:scaleX="1.15"
+        android:scaleY="1.15"
+        android:showText="false"
+        android:textAlignment="textEnd"
+        app:layout_constraintStart_toStartOf="@+id/etChecklistSettingsDescription"
+        app:layout_constraintTop_toBottomOf="@+id/swHasNotifs" />
+
+    <TextView
+        android:id="@+id/tvHasAlbum"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:text="Photo Album Enabled"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/swHasAlbum"
+        app:layout_constraintStart_toEndOf="@+id/swHasAlbum"
+        app:layout_constraintTop_toTopOf="@+id/swHasAlbum" />
+
+    <Switch
+        android:id="@+id/swHasQuiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:checked="false"
+        android:scaleX="1.15"
+        android:scaleY="1.15"
+        android:showText="false"
+        android:textAlignment="textEnd"
+        app:layout_constraintStart_toStartOf="@+id/etChecklistSettingsDescription"
+        app:layout_constraintTop_toBottomOf="@+id/swHasAlbum" />
+
+    <TextView
+        android:id="@+id/tvHasQuiz"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:text="Reflection Enabled"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/swHasQuiz"
+        app:layout_constraintStart_toEndOf="@+id/swHasQuiz"
+        app:layout_constraintTop_toTopOf="@+id/swHasQuiz" />
+
+    <Button
+        android:id="@+id/btnDeleteList"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:text="Delete List"
+        app:layout_constraintEnd_toEndOf="@+id/etChecklistSettingsDescription"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/etChecklistSettingsDescription"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmitChecklistSettings" />
+
+    <Button
+        android:id="@+id/btnSubmitChecklistSettings"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/etChecklistSettingsDescription"
+        app:layout_constraintStart_toStartOf="@+id/etChecklistSettingsDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvHasQuiz" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

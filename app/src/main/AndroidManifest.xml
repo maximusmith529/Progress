@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Progress"
         tools:targetApi="31" >
         <activity
-            android:name=".ChecklistSettingsActivity"
+            android:name=".TaskList.ChecklistSettingsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

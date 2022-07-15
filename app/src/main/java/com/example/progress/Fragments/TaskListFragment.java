@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.progress.Adapters.ChecklistAdapter;
 import com.example.progress.Adapters.TaskAdapter;
+import com.example.progress.TaskList.ChecklistSettingsActivity;
 import com.example.progress.TaskList.CreateTaskActivity;
 import com.example.progress.Models.CheckList;
 import com.example.progress.Models.Task;
@@ -115,7 +116,10 @@ public class TaskListFragment extends Fragment {
         btnChecklistSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: setup checklist settings activity
+                Intent i = new Intent(getActivity(), ChecklistSettingsActivity.class);
+                i.putExtra("checklist", checklist);
+                startActivity(i);
+                return;
             }
         });
 
