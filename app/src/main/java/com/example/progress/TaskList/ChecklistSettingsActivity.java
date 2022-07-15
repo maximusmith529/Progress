@@ -2,6 +2,7 @@ package com.example.progress.TaskList;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.progress.MainActivity;
 import com.example.progress.Models.CheckList;
 import com.example.progress.R;
 import com.parse.ParseException;
@@ -43,35 +45,36 @@ public class ChecklistSettingsActivity extends AppCompatActivity {
         etChecklistSettingsDescription = findViewById(R.id.etChecklistSettingsDescription);
         etChecklistSettingsTitle = findViewById(R.id.etChecklistSettingsTitle);
 
-        swHasAlbum.setOnClickListener(new View.OnClickListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "swHasAlbum was clicked");
-                checklist.setHasPhotos(!checklist.getHasPhotos());
-            }
-        });
-        swHasNotifs.setOnClickListener(new View.OnClickListener() {
-            //TODO: change this to check and add during the submit process
-           @Override
-           public void onClick(View v) {
-               Log.i(TAG, "swHasNotifs was clicked\n Current Boolean: " + checklist.getHasNotifs() + "\n!Version: " + !checklist.getHasNotifs());
-               checklist.setHasNotifs(!checklist.getHasNotifs());
-               checklist.saveInBackground(new SaveCallback() {
-                   @Override
-                   public void done(ParseException e) {
-                       if (e != null) {
-                           Log.e(TAG, "Error while creating checklist");
-                       }
-                   }
-               });
-           }
-       });
 
-        swHasQuiz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "swHasQuiz was clicked");
-                checklist.setHasQuiz(!checklist.getHasQuiz());
+                    Log.i(TAG, "Saving Data for hasNotifs\n Current Boolean: " + checklist.getHasNotifs() + "\nChanged to: " + swHasNotifs.isChecked());
+                    checklist.setHasNotifs(swHasNotifs.isChecked());
+
+                    Log.i(TAG, "Saving Data for hasPhotos\n Current Boolean: " + checklist.getHasPhotos() + "\nChanged to: " + swHasAlbum.isChecked());
+                    checklist.setHasPhotos(swHasAlbum.isChecked());
+
+                    Log.i(TAG, "Saving Data for hasQuiz\n Current Boolean: " + checklist.getHasQuiz() + "\nChanged to: " + swHasQuiz.isChecked());
+                    checklist.setHasQuiz(swHasQuiz.isChecked());
+
+                    Log.i(TAG, "Saving Data for checklist name\n Current Name: " + checklist.getName() + "\nChanged to: " + etChecklistSettingsTitle.getText().toString());
+                    checklist.setName(etChecklistSettingsTitle.getText().toString());
+
+                    Log.i(TAG, "Saving Data for checklist desc\n Current Desc: " + checklist.getDescription() + "\nChanged to: " + etChecklistSettingsDescription.getText().toString());
+                    checklist.setDescription(etChecklistSettingsDescription.getText().toString());
+
+                    checklist.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e != null) {
+                                Log.e(TAG, "Error while saving checklist data: " + checklist.getName());
+                            }
+                        }
+                    });
+                    Intent i = new Intent(ChecklistSettingsActivity.this, MainActivity.class);
+                    startActivity(i);
+
             }
         });
 
