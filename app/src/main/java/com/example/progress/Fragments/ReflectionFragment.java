@@ -43,7 +43,7 @@ public class ReflectionFragment extends Fragment {
     public static final String TAG = "Reflection Fragment";
     private RecyclerView rvAlbums, rvQuizzes;
     protected AlbumAdapter albumAdapter, quizAdapter;
-    protected List<CheckList> checklists;
+    protected List<CheckList> checklists, quizzes;
 
 
     public ReflectionFragment() {
@@ -92,7 +92,8 @@ public class ReflectionFragment extends Fragment {
 
         checklists = new ArrayList<>();
         albumAdapter = new AlbumAdapter(getContext(), checklists);
-        quizAdapter = new AlbumAdapter(getContext(), checklists);
+        quizzes = new ArrayList<>();
+        quizAdapter = new AlbumAdapter(getContext(), quizzes);
 
         rvAlbums.setAdapter(albumAdapter);
         rvAlbums.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -103,13 +104,13 @@ public class ReflectionFragment extends Fragment {
         queryListsForCurrentUserQuiz();
     }
 
-    private void queryListsForCurrentUserQuiz() {
+    private void queryListsForCurrentUserAlbum() {
         // get only checklists
         ParseQuery<CheckList> query = ParseQuery.getQuery(CheckList.class);
         // only from user
         query.include(CheckList.KEY_USER);
         query.whereEqualTo(CheckList.KEY_USER, ParseUser.getCurrentUser());
-        query.whereEqualTo(CheckList.hasQuiz, true);
+        query.whereEqualTo(CheckList.hasPhotos, true);
         query.orderByDescending("created_at");
         query.findInBackground(new FindCallback<CheckList>() {
             @Override
@@ -138,13 +139,13 @@ public class ReflectionFragment extends Fragment {
         });
     }
 
-    private void queryListsForCurrentUserAlbum() {
+    private void queryListsForCurrentUserQuiz() {
         // get only checklists
         ParseQuery<CheckList> query = ParseQuery.getQuery(CheckList.class);
         // only from user
         query.include(CheckList.KEY_USER);
         query.whereEqualTo(CheckList.KEY_USER, ParseUser.getCurrentUser());
-        query.whereEqualTo(CheckList.hasPhotos, true);
+        query.whereEqualTo(CheckList.hasQuiz, true);
         query.orderByDescending("created_at");
         query.findInBackground(new FindCallback<CheckList>() {
             @Override

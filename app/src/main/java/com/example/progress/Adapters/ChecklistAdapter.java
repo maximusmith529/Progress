@@ -1,6 +1,7 @@
 package com.example.progress.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.progress.Models.CheckList;
 import com.example.progress.Models.Task;
 import com.example.progress.R;
+import com.example.progress.TaskList.ChecklistSettingsActivity;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.w3c.dom.Text;
 
@@ -46,6 +52,8 @@ public class ChecklistAdapter extends RecyclerView.Adapter<ChecklistAdapter.View
         holder.bind(checkList);
     }
 
+
+
     @Override
     public int getItemCount() {
         return checkLists.size();
@@ -65,11 +73,63 @@ public class ChecklistAdapter extends RecyclerView.Adapter<ChecklistAdapter.View
         public void bind(CheckList checkList){
             tvChecklistName.setText(checkList.getName());
             Log.d(TAG, "Bind Ran \nListName:" + checkList.getName() + "\nDescription: "+checkList.getDescription());
-            if(checkList.getIsActive()){
+            if(checkList.getIsActive()) {
                 swtIsActive.setChecked(true);
-                return;
+                swtIsActive.setText("Active");
             }
-            swtIsActive.setText("Inactive");
+            else {
+                swtIsActive.setText("Inactive");
+                swtIsActive.setChecked(false);
+            }
+
+            swtIsActive.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO: finish setActive in checkLists
+                    // get only checklists
+                    ParseQuery<CheckList> query = ParseQuery.getQuery(CheckList.class);
+                    // only from user
+                    query.include(CheckList.KEY_USER);
+                    query.whereEqualTo(CheckList.KEY_USER, ParseUser.getCurrentUser());
+                    query.orderByDescending("created_at");
+                    query.findInBackground(new FindCallback<CheckList>() {
+                        @Override
+                        public void done(List<CheckList> objects, ParseException e) {
+                            if (e != null) {
+                                Log.e(TAG, "Issue with getting lists", e);
+                                return;
+                            }
+                            for(CheckList t : objects) {
+                                Log.i(TAG, "List Name = " + t.getName());
+                                if(t.getIsActive()) {
+                                    t.setIsActive(false);
+                                    t.saveData();
+                                }
+                            }
+                        }
+                    });
+                    checkList.setIsActive(true);
+                    checkList.saveData();
+                    notifyDataSetChanged();
+
+
+                }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, ChecklistSettingsActivity.class);
+                    i.putExtra("checklist", checkList);
+                    context.startActivity(i);
+                    return;
+                }
+            });
+
+        }
+        public void refresh(){
+            for(CheckList c: checkLists)
+                bind(c);
         }
 
     }
@@ -84,4 +144,6 @@ public class ChecklistAdapter extends RecyclerView.Adapter<ChecklistAdapter.View
         checkLists.addAll(list);
         notifyDataSetChanged();
     }
+
+
 }

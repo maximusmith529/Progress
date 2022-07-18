@@ -1,9 +1,13 @@
 package com.example.progress.Models;
 
 
+import android.util.Log;
+
 import com.parse.ParseClassName;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -69,7 +73,17 @@ public class CheckList extends ParseObject {
     public boolean getHasNotifs() {
         return getBoolean(hasNotifs);
     }
-    public void setHasNotifs(boolean bool) {put(hasNotifs, bool);
+    public void setHasNotifs(boolean bool) {put(hasNotifs, bool);}
+
+    public void saveData(){
+        this.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Error while saving checklist data: " + getName());
+                }
+            }
+        });
     }
 
 }
