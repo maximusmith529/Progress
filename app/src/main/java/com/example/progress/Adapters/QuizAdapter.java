@@ -80,6 +80,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder>  {
                 public void onClick(View v) {
                     Intent i = new Intent(context, QuizActivity.class);
                     i.putExtra("checklist",checkList);
+                    Log.i(TAG,"Sending to Quiz: "+checkList.getName());
                     context.startActivity(i);
                 }
             });

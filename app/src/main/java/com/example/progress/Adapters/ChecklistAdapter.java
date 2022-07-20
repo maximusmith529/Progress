@@ -22,6 +22,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.w3c.dom.Text;
 
@@ -106,11 +107,19 @@ public class ChecklistAdapter extends RecyclerView.Adapter<ChecklistAdapter.View
                                     t.saveData();
                                 }
                             }
+                            checkList.setIsActive(true);
+                            checkList.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e != null) {
+                                        Log.e(TAG, "Error while saving checklist data: " + checkList.getName());
+                                    }
+                                }
+                            });
+                            notifyDataSetChanged();
                         }
                     });
-                    checkList.setIsActive(true);
-                    checkList.saveData();
-                    notifyDataSetChanged();
+
 
 
                 }

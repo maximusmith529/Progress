@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.progress.Adapters.AlbumAdapter;
+import com.example.progress.Adapters.QuizAdapter;
 import com.example.progress.Models.CheckList;
 import com.example.progress.R;
 import com.parse.FindCallback;
@@ -42,7 +43,8 @@ public class ReflectionFragment extends Fragment {
 
     public static final String TAG = "Reflection Fragment";
     private RecyclerView rvAlbums, rvQuizzes;
-    protected AlbumAdapter albumAdapter, quizAdapter;
+    protected AlbumAdapter albumAdapter;
+    protected QuizAdapter quizAdapter;
     protected List<CheckList> checklists, quizzes;
 
 
@@ -93,7 +95,7 @@ public class ReflectionFragment extends Fragment {
         checklists = new ArrayList<>();
         albumAdapter = new AlbumAdapter(getContext(), checklists);
         quizzes = new ArrayList<>();
-        quizAdapter = new AlbumAdapter(getContext(), quizzes);
+        quizAdapter = new QuizAdapter(getContext(), quizzes);
 
         rvAlbums.setAdapter(albumAdapter);
         rvAlbums.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));

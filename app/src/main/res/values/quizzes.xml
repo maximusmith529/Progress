@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="difficultyQuestion">How difficult were today\'s activities in this list?</string>
+
+    <string-array name="difficultyAnswers">
+        <item>Very Easy</item>
+        <item>Easy</item>
+        <item>Perfect</item>
+        <item>Challenging</item>
+        <item>Difficult</item>
+    </string-array>
+
+    <string name="difficultyQuestionHard">Was it too difficult and if it was why?</string>
+    <string-array name="difficultyAnswersHard">
+        <item>Yes, outside forces</item>
+        <item>Yes, the tasks were too hard</item>
+        <item>Yes, there were too many tasks</item>
+        <item>No</item>
+    </string-array>
+
+    <string name="difficultyQuestionEasy">Was it too easy?</string>
+    <string-array name="difficultyAnswersEasy">
+        <item>Yes</item>
+        <item>No, I\'d prefer it to be tougher</item>
+    </string-array>
+
+    <string name="outsideForcesResult">It helps to have a good environment around you while you work as it can help boost your productivity and reduce stress</string>
+    <string name="tasksTooHardResult">It\'s important for us to set realistic goals so that we may attain them and grow.\nWould you like to edit your tasks for next time?</string>
+    <string-array name="toTaskListAnswers">
+        <item>Let\'s go</item>
+        <item>Maybe later</item>
+    </string-array>
+</resources>

@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/activity_album.xml" value="0.264" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/activity_album.xml" value="0.4" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/activity_camera.xml" value="0.2" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/activity_checklist_settings.xml" value="0.4" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/activity_create_checklist.xml" value="0.27898550724637683" />
@@ -16,17 +16,19 @@
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/activity_quiz.xml" value="0.264" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/activity_signup.xml" value="0.10740740740740741" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/fileprovider.xml" value="0.10009057971014493" />
-        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/fragment_check_lists.xml" value="0.176" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/fragment_check_lists.xml" value="0.536" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/fragment_checklist.xml" value="0.2817028985507246" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/fragment_dashboard.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/fragment_reflection.xml" value="0.327445652173913" />
-        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/fragment_tasklist.xml" value="0.176" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/fragment_tasklist.xml" value="0.4" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/item_album.xml" value="0.4" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/item_checklist.xml" value="0.4" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/item_photo.xml" value="0.327445652173913" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/item_task.xml" value="0.2817028985507246" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/layout/list_popup_window_item.xml" value="1.0" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.4265625" />
+        <entry key="..\:/Users/maximussmith/AndroidStudioProjects/Progress/app/src/main/res/menu/overflow_menu.xml" value="0.38229166666666664" />
       </map>
     </option>
   </component>

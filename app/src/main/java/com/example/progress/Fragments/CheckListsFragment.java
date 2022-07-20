@@ -101,6 +101,8 @@ public class CheckListsFragment extends Fragment {
         queryListsForCurrentUser();
     }
 
+
+
     private void queryListsForCurrentUser(){
         // get only checklists
         ParseQuery<CheckList> query = ParseQuery.getQuery(CheckList.class);
