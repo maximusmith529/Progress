@@ -19,16 +19,20 @@
         <item>No</item>
     </string-array>
 
-    <string name="difficultyQuestionEasy">Was it too easy?</string>
+    <string name="difficultyQuestionEasy">Is it ok that they were easy?</string>
     <string-array name="difficultyAnswersEasy">
         <item>Yes</item>
         <item>No, I\'d prefer it to be tougher</item>
     </string-array>
 
-    <string name="outsideForcesResult">It helps to have a good environment around you while you work as it can help boost your productivity and reduce stress</string>
+    <string name="outsideForcesResult">It helps to have a good environment around you while you work as it can help boost your productivity and reduce stress.</string>
     <string name="tasksTooHardResult">It\'s important for us to set realistic goals so that we may attain them and grow.\nWould you like to edit your tasks for next time?</string>
+    <string name="tooManyTasksResult">It\s important not to overexert ourselves consistently. Try taking a task or two off or modifying them. You can always add them back later. </string>
     <string-array name="toTaskListAnswers">
         <item>Let\'s go</item>
         <item>Maybe later</item>
     </string-array>
+
+    <string name="tasksWereGoodEasyResult">Nice! It\'s always helpful to do easy things. It can help us relax and refocus our minds for the rest of the day!</string>
+    <string name="tasksTooEasyResult">Then I\d recommend reviewing your list and adding tougher tasks, or potentially changing some to \'growing\' tasks which are ideal for things like workout routines</string>
 </resources>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ import com.parse.SaveCallback;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChecklistAdapter extends RecyclerView.Adapter<ChecklistAdapter.ViewHolder> {
@@ -74,66 +76,50 @@ public class ChecklistAdapter extends RecyclerView.Adapter<ChecklistAdapter.View
         public void bind(CheckList checkList){
             tvChecklistName.setText(checkList.getName());
             Log.d(TAG, "Bind Ran \nListName:" + checkList.getName() + "\nDescription: "+checkList.getDescription());
-            if(checkList.getIsActive()) {
-                swtIsActive.setChecked(true);
+            swtIsActive.setChecked(checkList.getIsActive());
+            if(checkList.getIsActive())
                 swtIsActive.setText("Active");
-            }
-            else {
+
+            else
                 swtIsActive.setText("Inactive");
-                swtIsActive.setChecked(false);
-            }
+
 
             swtIsActive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.i(TAG, "Checklist Clicked: "+checkList.getName());
                     //TODO: finish setActive in checkLists
                     // get only checklists
-                    ParseQuery<CheckList> query = ParseQuery.getQuery(CheckList.class);
-                    // only from user
-                    query.include(CheckList.KEY_USER);
-                    query.whereEqualTo(CheckList.KEY_USER, ParseUser.getCurrentUser());
-                    query.orderByDescending("created_at");
-                    query.findInBackground(new FindCallback<CheckList>() {
-                        @Override
-                        public void done(List<CheckList> objects, ParseException e) {
-                            if (e != null) {
-                                Log.e(TAG, "Issue with getting lists", e);
-                                return;
-                            }
-                            for(CheckList t : objects) {
-                                Log.i(TAG, "List Name = " + t.getName());
-                                if(t.getIsActive()) {
-                                    t.setIsActive(false);
-                                    t.saveData();
-                                }
-                            }
-                            checkList.setIsActive(true);
-                            checkList.saveInBackground(new SaveCallback() {
-                                @Override
-                                public void done(ParseException e) {
-                                    if (e != null) {
-                                        Log.e(TAG, "Error while saving checklist data: " + checkList.getName());
-                                    }
-                                }
-                            });
-                            notifyDataSetChanged();
+                    if(swtIsActive.isChecked() == true) {
+                        for(CheckList c: checkLists) {
+                            c.setIsActive(false);
+                            c.saveInBackground();
                         }
-                    });
-
-
-
+                        checkList.setIsActive(true);
+                        checkList.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                               notifyDataSetChanged();
+                            }
+                        });
+                    }
+                    else{
+                        checkList.setIsActive(false);
+                        checkList.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                if (e != null) {
+                                    Log.e(TAG, "Error while saving checklist data: " + checkList.getName());
+                                }
+                                Log.i(TAG, "Save Successful for Checklist: " + checkList.getName());
+                                notifyDataSetChanged();
+                            }
+                        });
+                    }
                 }
             });
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(context, ChecklistSettingsActivity.class);
-                    i.putExtra("checklist", checkList);
-                    context.startActivity(i);
-                    return;
-                }
-            });
+
 
         }
         public void refresh(){

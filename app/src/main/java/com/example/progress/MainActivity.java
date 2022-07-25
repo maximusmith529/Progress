@@ -74,7 +74,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        bottomNavigationView.setSelectedItemId(R.id.btnTaskListView);
+        if(getIntent().hasExtra("fragment"))
+            bottomNavigationView.setSelectedItemId(getIntent().getIntExtra("fragment",R.id.btnTaskListView));
+        else
+            bottomNavigationView.setSelectedItemId(R.id.btnTaskListView);
+
     }
 
 

@@ -1,8 +1,10 @@
 package com.example.progress;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -75,13 +77,14 @@ public class QuizActivity extends AppCompatActivity {
                     case "Was it too difficult and if it was why?":
                         switch(answer) {
                             case "Yes, outside forces":
+                                //Might need to change the answer array
                                 setScreen(R.string.outsideForcesResult, R.array.toTaskListAnswers);
                                 break;
                             case "Yes, the tasks were too hard":
                                 setScreen(R.string.tasksTooHardResult, R.array.toTaskListAnswers);
                                 break;
                             case "Yes, there were too many tasks":
-
+                                setScreen(R.string.tooManyTasksResult, R.array.toTaskListAnswers);
                                 break;
                             case "No":
 
@@ -89,15 +92,31 @@ public class QuizActivity extends AppCompatActivity {
                         }
                         break;
 
-                        case "It helps to have a good environment around you while you work as it can help boost your productivity and reduce stress"
-                    case("Was it too easy?"):
+                    case "It helps to have a good environment around you while you work as it can help boost your productivity and reduce stress":
+                    //TODO: Setup Popup Message
+
+                        break;
+
+                    case("Is it ok that they were easy?"):
                         switch(answer) {
                             case "Yes":
-
+                                goToReflection(getString(R.string.tasksWereGoodEasyResult));
                                 break;
                             case "No, I\'d prefer it to be tougher":
-
+                                 setScreen(R.string.tasksTooEasyResult, R.array.toTaskListAnswers);
                                 break;
+                        }
+                        break;
+
+                    case "It\'s important for us to set realistic goals so that we may attain them and grow.\nWould you like to edit your tasks for next time?":
+                        switch(answer){
+                            case "Let\'s go":
+                                goToTaskList("Remember that the routines are meant for self growth. Everyone has their own pace. \nPlease try to remove or edit a few tasks to make your workload more achievable");
+                                break;
+                            case "Maybe later":
+                                goToReflection(null);
+                                break;
+
                         }
                         break;
 
@@ -112,6 +131,16 @@ public class QuizActivity extends AppCompatActivity {
         tvQuestion.setText(questionID);
         adapter = ArrayAdapter.createFromResource(context, answersID, android.R.layout.simple_spinner_item);
         spAnswers.setAdapter(adapter);
+    }
+
+    void goToReflection(@Nullable String message){
+        if(message == null)
+        {
+            Intent i = new Intent(QuizActivity.this, MainActivity.class);
+            i.putExtra("fragment", R.id.btnReflectionView);
+            startActivity(i);
+        }
+        finish();
     }
 
     void goToTaskList(String message){
