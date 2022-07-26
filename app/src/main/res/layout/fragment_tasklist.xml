@@ -7,11 +7,11 @@
 
     <TextView
         android:id="@+id/tvChecklistName"
-        android:layout_width="314dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
         android:text="TextView"
         android:textSize="40sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnListFinish"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,11 +26,11 @@
 
     <ImageButton
         android:id="@+id/btnChecklistSettings"
-        android:layout_width="45dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="5dp"
         android:background="?attr/actionModePasteDrawable"
         app:layout_constraintBottom_toTopOf="@+id/rvTasks"
         app:layout_constraintEnd_toStartOf="@+id/btnNewTask"
@@ -56,4 +56,17 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvChecklistName" />
+
+    <ImageButton
+        android:id="@+id/btnListFinish"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="5dp"
+        android:background="@android:drawable/ic_menu_revert"
+        app:layout_constraintBottom_toBottomOf="@+id/btnChecklistSettings"
+        app:layout_constraintEnd_toEndOf="@+id/tvChecklistName"
+        app:layout_constraintEnd_toStartOf="@+id/btnChecklistSettings"
+        app:layout_constraintTop_toTopOf="@+id/btnChecklistSettings" />
 </androidx.constraintlayout.widget.ConstraintLayout>

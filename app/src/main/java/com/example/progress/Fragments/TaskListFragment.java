@@ -52,7 +52,7 @@ public class TaskListFragment extends Fragment {
     public static final String TAG = "TaskList Fragment";
     private RecyclerView rvTasks;
     private TextView tvChecklistTitle;
-    private ImageButton btnChecklistSettings, btnNewTask;
+    private ImageButton btnChecklistSettings, btnNewTask, btnListFinish;
     protected TaskAdapter adapter;
     protected ChecklistAdapter checklistAdapter;
     private CheckList checklist;
@@ -106,6 +106,7 @@ public class TaskListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rvTasks = view.findViewById(R.id.rvTasks);
         tvChecklistTitle = view.findViewById(R.id.tvChecklistName);
+        btnListFinish = view.findViewById(R.id.btnListFinish);
         tasks = new ArrayList<>();
         adapter = new TaskAdapter(getContext(), tasks);
         //not used, yet TODO: Replace textView with adapter
@@ -134,6 +135,16 @@ public class TaskListFragment extends Fragment {
             }
         });
 
+        btnListFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: Refresh page
+                for(Task t: tasks){
+                    t.setFinished(false);
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
         // set the adapter on the recycler view
         rvTasks.setAdapter(adapter);
         // set the layout manager on the recycler view

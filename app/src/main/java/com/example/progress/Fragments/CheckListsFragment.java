@@ -89,13 +89,6 @@ public class CheckListsFragment extends Fragment {
                 return;
             }
         });
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                queryListsForCurrentUser();
-                Log.i(TAG, "View Clicked");
-            }
-        });
 
 
         queryListsForCurrentUser();

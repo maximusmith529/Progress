@@ -34,7 +34,9 @@
         app:layout_constraintEnd_toEndOf="@+id/etChecklistSettingsTitle"
         app:layout_constraintStart_toStartOf="@+id/etChecklistSettingsTitle"
         app:layout_constraintTop_toBottomOf="@+id/etChecklistSettingsTitle"
-        tools:text="TestDescription Space" />
+        tools:text="TestDescription Space"
+
+        />
 
     <Switch
         android:id="@+id/swHasNotifs"
@@ -47,7 +49,9 @@
         android:showText="false"
         android:textAlignment="textEnd"
         app:layout_constraintStart_toStartOf="@+id/etChecklistSettingsDescription"
-        app:layout_constraintTop_toBottomOf="@+id/etChecklistSettingsDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/etChecklistSettingsDescription"
+
+        />
 
     <TextView
         android:id="@+id/tvHasNotifs"
@@ -74,7 +78,8 @@
         android:showText="false"
         android:textAlignment="textEnd"
         app:layout_constraintStart_toStartOf="@+id/etChecklistSettingsDescription"
-        app:layout_constraintTop_toBottomOf="@+id/swHasNotifs" />
+        app:layout_constraintTop_toBottomOf="@+id/swHasNotifs"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/tvHasAlbum"
