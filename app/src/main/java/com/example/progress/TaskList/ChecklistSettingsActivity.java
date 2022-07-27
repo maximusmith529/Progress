@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import com.example.progress.MainActivity;
 import com.example.progress.Models.CheckList;
@@ -42,8 +41,8 @@ public class ChecklistSettingsActivity extends AppCompatActivity {
         btnDeleteList = findViewById(R.id.btnDeleteList);
         btnSubmit = findViewById(R.id.btnSubmitChecklistSettings);
 
-        etChecklistSettingsDescription = findViewById(R.id.etChecklistSettingsDescription);
-        etChecklistSettingsTitle = findViewById(R.id.etChecklistSettingsTitle);
+        etChecklistSettingsDescription = findViewById(R.id.etTaskSettingsDescription);
+        etChecklistSettingsTitle = findViewById(R.id.etTaskSettingsTitle);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

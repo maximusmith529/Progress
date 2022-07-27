@@ -95,6 +95,13 @@ public class TaskListFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+        queryActiveListsForCurrentUser();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -138,13 +145,14 @@ public class TaskListFragment extends Fragment {
         btnListFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Refresh page
                 for(Task t: tasks){
                     t.setFinished(false);
                 }
                 adapter.notifyDataSetChanged();
             }
         });
+
+
         // set the adapter on the recycler view
         rvTasks.setAdapter(adapter);
         // set the layout manager on the recycler view
