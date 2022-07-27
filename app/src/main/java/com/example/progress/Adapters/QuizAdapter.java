@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.progress.AlbumActivity;
 import com.example.progress.Models.CheckList;
+import com.example.progress.QuizActivity;
 import com.example.progress.R;
 import com.parse.ParseFile;
 
@@ -69,13 +70,17 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder>  {
             Log.d(TAG, "Bind Ran \nListName:" + checkList.getName() + "\nDescription: "+checkList.getDescription());
             ParseFile image = checkList.getKeyThumbnail();
             if (image != null) {
-                Glide.with(context).load(image.getUrl()).into(ivThumbnail);
+                Glide.with(context).load(image.getUrl())
+                        .override(ivThumbnail.getWidth(), ivThumbnail.getHeight())
+                        .centerCrop() // scale to fit entire image within ImageView
+                        .into(ivThumbnail);
             }
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(context, AlbumActivity.class);
+                    Intent i = new Intent(context, QuizActivity.class);
                     i.putExtra("checklist",checkList);
+                    Log.i(TAG,"Sending to Quiz: "+checkList.getName());
                     context.startActivity(i);
                 }
             });

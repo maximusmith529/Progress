@@ -69,7 +69,10 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
             Log.d(TAG, "Bind Ran \nListName:" + checkList.getName() + "\nDescription: "+checkList.getDescription());
             ParseFile image = checkList.getKeyThumbnail();
             if (image != null) {
-                Glide.with(context).load(image.getUrl()).into(ivThumbnail);
+                Glide.with(context).load(image.getUrl())
+                        .override(ivThumbnail.getWidth(), ivThumbnail.getHeight())
+                        .centerCrop() // scale to fit entire image within ImageView
+                        .into(ivThumbnail);
             }
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

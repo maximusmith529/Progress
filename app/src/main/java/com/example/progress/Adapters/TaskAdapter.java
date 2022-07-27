@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 
@@ -13,8 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.progress.Models.CheckList;
 import com.example.progress.Models.Task;
 import com.example.progress.R;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.w3c.dom.Text;
 
@@ -63,9 +70,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
         }
 
-        public void bind(Task task){
+        public void bind(Task task) {
             cbTask.setText(task.getName());
-            if(task.getDescription() != null)
+            if (task.getDescription() != null)
                 tvTaskDescription.setText(task.getDescription());
             else {
                 tvTaskDescription.setVisibility(View.GONE);
@@ -75,10 +82,29 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             cbTask.setText(task.getName());
             cbTask.setChecked(task.isFinished());
             //tvTaskDescription.setText(task.getDescription());
+            cbTask.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-            Log.d(TAG, "Bind Ran \nTaskName:" + task.getName() + "\nDescription: "+task.getDescription());
+
+                    task.setFinished(isChecked);
+                    task.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e != null) {
+                                Log.e(TAG, "Error while saving task data: " + task.getName() + task.isFinished());
+                            }
+                            notifyDataSetChanged();
+                        }
+                    });
+
+                }
+            });
+
+            Log.d(TAG, "Bind Ran \nTaskName:" + task.getName() + "\nDescription: " + task.getDescription());
+
+
         }
-
     }
     // Clean all elements of the recycler
     public void clear() {
@@ -92,3 +118,4 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 }
+
