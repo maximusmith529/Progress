@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvDeleteTaskTitle"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="bottom|center"
+        android:scaleType="center"
+        android:text="Edit Task"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <EditText
+        android:id="@+id/etDetailTaskName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDeleteTaskTitle" />
+
+    <EditText
+        android:id="@+id/etDetailTaskDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        app:layout_constraintEnd_toEndOf="@+id/etDetailTaskName"
+        app:layout_constraintStart_toStartOf="@+id/etDetailTaskName"
+        app:layout_constraintTop_toBottomOf="@+id/etDetailTaskName" />
+
+    <Button
+        android:id="@+id/btnDeleteTaskConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:backgroundTint="#00FFFFFF"
+        android:text="Submit"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDetailTaskDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>
