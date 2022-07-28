@@ -38,6 +38,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'com.facebook.android:facebook-login:latest.release'
+    //implementation 'com.facebook.android:facebook-android-sdk:14.1.0'
+    implementation "com.github.parse-community.Parse-SDK-Android:facebook:latest.release"
     implementation 'androidx.navigation:navigation-ui:2.3.5'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

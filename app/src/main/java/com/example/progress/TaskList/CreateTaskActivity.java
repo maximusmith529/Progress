@@ -66,6 +66,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                 etCreateTaskName.setText("");
                 etCreateTaskDescription.setText("");
                 goToMain();
+                
             }
 
         });

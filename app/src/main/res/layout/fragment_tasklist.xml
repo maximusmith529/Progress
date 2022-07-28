@@ -27,7 +27,7 @@
     <ImageButton
         android:id="@+id/btnChecklistSettings"
         android:layout_width="40dp"
-        android:layout_height="0dp"
+        android:layout_height="45dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="5dp"
@@ -40,7 +40,7 @@
     <ImageButton
         android:id="@+id/btnNewTask"
         android:layout_width="45dp"
-        android:layout_height="0dp"
+        android:layout_height="45dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@android:drawable/ic_menu_add"
@@ -60,7 +60,7 @@
     <ImageButton
         android:id="@+id/btnListFinish"
         android:layout_width="40dp"
-        android:layout_height="0dp"
+        android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="5dp"

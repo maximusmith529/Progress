@@ -9,6 +9,7 @@ import com.parse.Parse.Configuration;
 import com.example.progress.Models.CheckList;
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.facebook.ParseFacebookUtils;
 
 
 public class ParseApplication extends Application {
@@ -27,6 +28,7 @@ public class ParseApplication extends Application {
                 .server("https://parseapi.back4app.com/")
                 .build()
         );
+        ParseFacebookUtils.initialize(this);
     }
 
 }

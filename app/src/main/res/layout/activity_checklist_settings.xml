@@ -111,15 +111,14 @@
         android:id="@+id/tvHasQuiz"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="22dp"
         android:text="Reflection Enabled"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/swHasQuiz"
         app:layout_constraintStart_toEndOf="@+id/swHasQuiz"
-        app:layout_constraintTop_toTopOf="@+id/swHasQuiz" />
+        app:layout_constraintTop_toBottomOf="@+id/tvHasAlbum" />
 
     <Button
         android:id="@+id/btnDeleteList"
@@ -136,10 +135,20 @@
         android:id="@+id/btnSubmitChecklistSettings"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="@+id/etTaskSettingsDescription"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etTaskSettingsDescription"
         app:layout_constraintTop_toBottomOf="@+id/tvHasQuiz" />
+
+    <Button
+        android:id="@+id/btnToCalendar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="to Calenda"
+        app:layout_constraintEnd_toEndOf="@+id/btnDeleteList"
+        app:layout_constraintStart_toStartOf="@+id/btnDeleteList"
+        app:layout_constraintTop_toBottomOf="@+id/btnDeleteList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
