@@ -12,5 +12,11 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="facebook_app_id">2059764604208090</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">2804dfd8249c1988c5e9a78755a72548</string>
+
+
+
 
 </resources>

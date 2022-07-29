@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import com.example.progress.Alarms.AlarmMainActivity;
 import com.example.progress.MainActivity;
 import com.example.progress.Models.CheckList;
 import com.example.progress.R;
@@ -22,8 +23,7 @@ public class ChecklistSettingsActivity extends AppCompatActivity {
     private Switch swHasNotifs;
     private Switch swHasQuiz;
     private Switch swHasAlbum;
-    private Button btnDeleteList;
-    private Button btnSubmit;
+    private Button btnDeleteList, btnSubmit, btnToCalendar;
     private EditText etChecklistSettingsTitle;
     private EditText etChecklistSettingsDescription;
     private CheckList checklist;
@@ -40,9 +40,19 @@ public class ChecklistSettingsActivity extends AppCompatActivity {
 
         btnDeleteList = findViewById(R.id.btnDeleteList);
         btnSubmit = findViewById(R.id.btnSubmitChecklistSettings);
+        btnToCalendar = findViewById(R.id.btnToCalendar);
 
         etChecklistSettingsDescription = findViewById(R.id.etTaskSettingsDescription);
         etChecklistSettingsTitle = findViewById(R.id.etTaskSettingsTitle);
+
+        btnToCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ChecklistSettingsActivity.this, AlarmMainActivity.class);
+
+                startActivity(i);
+            }
+        });
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +86,7 @@ public class ChecklistSettingsActivity extends AppCompatActivity {
 
             }
         });
+
 
         checkSwitches();
         setText();

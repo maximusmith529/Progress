@@ -39,11 +39,28 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
+        android:backgroundTint="#C6C6C6"
         android:text="Log in"
+        android:textColor="#303030"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+    <Button
+        android:id="@+id/btnFacebook"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="#C6C6C6"
+        android:text="Login with Facebook"
+        android:textColor="#303030"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnConfirm" />
 
     <ImageView
         android:id="@+id/imageView"
